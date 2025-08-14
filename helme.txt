@@ -1,0 +1,51 @@
+/crm
+ ├── /auth                # Autenticación y control de acceso (usuarios, roles, permisos)
+ │   ├── users.php        # Gestión de usuarios
+ │   ├── roles.php        # Gestión de roles
+ │   ├── permissions.php  # Gestión de permisos
+ │   ├── assign_roles.php # Asignar roles a usuarios
+ │   ├── assign_perms.php # Asignar permisos a roles
+ │   ├── login.php        # Inicio de sesión
+ │   ├── logout.php       # Cierre de sesión
+ │   ├── profile.php      # Perfil de usuario
+ │
+ ├── /employees           # Módulo de empleados
+ │   ├── employees.php    # Listado y gestión de empleados
+ │   ├── contracts.php    # Gestión de contratos
+ │   ├── positions.php    # Cargos o puestos
+ │   ├── leave_requests.php  # Solicitudes de permisos laborales (vacaciones, enfermedad, etc.)
+ │   ├── leave_approval.php  # Aprobación o rechazo de permisos
+ │   ├── leave_types.php     # Tipos de permisos (vacaciones, enfermedad, permisos especiales)
+ │   ├── leave_reports.php   # Reportes de permisos laborales
+ │
+ ├── /payroll             # Módulo de planilla
+ │   ├── payroll.php      # Procesamiento de nómina
+ │   ├── salaries.php     # Gestión de sueldos
+ │   ├── deductions.php   # Descuentos y retenciones
+ │   ├── bonuses.php      # Bonificaciones
+ │   ├── receipts.php     # Gestión de recibos de pago
+ │   ├── generate_receipt.php  # Generar recibo de pago
+ │   ├── receipt_templates/    # Plantillas de recibos PDF
+ │
+ ├── /schedules           # Módulo de horarios
+ │   ├── schedules.php    # Gestión de horarios
+ │   ├── templates.php    # Plantillas de horarios
+ │
+ ├── /attendance          # Módulo de asistencia
+ │   ├── attendances.php  # Registro de asistencias
+ │   ├── check_in.php     # Registro de entrada
+ │   ├── check_out.php    # Registro de salida
+ │   ├── reports.php      # Reportes de asistencia
+ │
+ ├── /reports             # Módulo de reportes
+ │   ├── attendance_report.php  # Reporte de asistencia
+ │   ├── payroll_report.php     # Reporte de planilla
+ │   ├── general_report.php     # Otros reportes
+ │
+ ├── /config              # Configuración del sistema
+ │   ├── database.php     # Conexión a la base de datos
+ │   ├── settings.php     # Configuración general
+ │
+ ├── index.php            # Página principal
+ ├── dashboard.php        # Panel de control
+ ├── .htaccess            # Seguridad y redirecciones

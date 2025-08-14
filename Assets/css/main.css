@@ -1,0 +1,52 @@
+body > div > aside.main-sidebar.sidebar-dark-primary.elevation-4 > div > nav > ul > li:nth-child(1) > a > p{
+    margin-right: 0.5rem;
+}
+
+.form-control-db{
+    border: 0;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0 1px #d8e0ee, 0 1px 2px #d8e0ee;
+    color: #526d8d;
+}
+.form-control-db:focus {
+    box-shadow: 0 0 0 2px #007bff;
+}
+.nav-icon{
+    width: auto !important;
+}
+.scrol-x{
+    overflow-x: scroll;
+}
+.db-table{
+    table-layout: auto;
+}
+thead th{
+    white-space: nowrap;
+}
+tbody td{
+    white-space: nowrap;
+}
+.buttons-payroll{
+    display: flex;
+}
+.buttons-payroll button{
+    width: auto;
+}
+.tree-wrapper::-webkit-scrollbar {
+    border: none;
+    height: 11px;
+    cursor: pointer;
+}
+
+.tree-wrapper::-webkit-scrollbar-thumb {
+    background: #EAEEFB;
+    border-radius: 24px;
+    cursor: grab;
+}
+#create-details input{
+    width: auto;
+    padding: 12px;
+}
+.card-header{
+    align-items: center;
+}
