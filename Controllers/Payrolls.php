@@ -289,16 +289,16 @@ class Payrolls extends Controllers
       
        // VERIRIFCAR SI chekAllIsr es on
        if (isset($payroll['chekAllIsr']) && $payroll['chekAllIsr'] === 'on') {
-            $employeeIdOne = $payroll['employee'][3]['employeeId'];
-            $isrOne = $payroll['employee'][3]['isr'];
-            $employeeIdTwo = $payroll['employee'][4]['employeeId'];
-            $isrTwo = $payroll['employee'][4]['isr'];
+            $employeeIdOne = $payroll['employee'][14]['employeeId'];
+            $isrOne = $payroll['employee'][14]['isr'];
+            $employeeIdTwo = $payroll['employee'][17]['employeeId'];
+            $isrTwo = $payroll['employee'][17]['isr'];
 
             if ($isrOne === "0.00" || $isrOne === "" || $isrTwo === "0.00" || $isrTwo === "" || $isrOne === "0" || $isrTwo === "0") {
                 echo json_encode([
                     "status" => "ERROR_PAYROLL_UPDATE_ISR",
                     "message" => "Debe ingresar el ISR para el empleado marcado en rojo.",
-                    "fields" => "['employee'][3]['isr'], ['employee'][4]['isr']"
+                    "fields" => "['employee'][14]['isr'], ['employee'][17]['isr']"
                 ]);
             exit();
         }

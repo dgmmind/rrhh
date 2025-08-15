@@ -58,8 +58,8 @@ export async function updatePayroll(response) {
       
             case 'ERROR_PAYROLL_UPDATE_ISR':
                 showToast('Error', data.message, { timeout: 10000, type: 'error' });
-                document.querySelector('input[name="employee[4][isr]"]').style.border = "3px solid red";
-                document.querySelector('input[name="employee[3][isr]"]').style.border = "3px solid red";
+                document.querySelector('input[name="employee[14][isr]"]').style.border = "3px solid red";
+                document.querySelector('input[name="employee[17][isr]"]').style.border = "3px solid red";
                 break;
 
         case 'error':

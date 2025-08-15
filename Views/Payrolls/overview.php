@@ -12,6 +12,24 @@ $payroll=$data1;
 $settings=$data2;
 ?>
 
+<style>
+ /* Drag-to-scroll styles for the overview table container */
+ .drag-scroll {
+   overflow: auto;
+   cursor: grab;
+   -webkit-overflow-scrolling: touch;
+ }
+ .drag-scroll.dragging {
+   cursor: grabbing;
+   user-select: none;
+ }
+ /* Ensure wide tables keep their width and allow horizontal scroll */
+ .db-table {
+   width: max-content;
+   min-width: max-content;
+ }
+</style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -44,7 +62,7 @@ $settings=$data2;
                     </button>
                 </div>
             </div>
-            <div class="card-body scrol-x tree-wrapper">
+            <div class="card-body scrol-x tree-wrapper drag-scroll">
             <div class="row">
 
 
@@ -331,5 +349,74 @@ $settings=$data2;
         });
     });
 
-</script>
+    // Enable drag-to-scroll on the overview table container
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.drag-scroll');
+        if (!container) return;
 
+        let isDown = false;
+        let startX = 0;
+        let startY = 0;
+        let scrollLeft = 0;
+        let scrollTop = 0;
+
+        // Mouse events
+        container.addEventListener('mousedown', (e) => {
+            isDown = true;
+            container.classList.add('dragging');
+            startX = e.pageX - container.offsetLeft;
+            startY = e.pageY - container.offsetTop;
+            scrollLeft = container.scrollLeft;
+            scrollTop = container.scrollTop;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.classList.remove('dragging');
+        });
+
+        container.addEventListener('mouseup', () => {
+            isDown = false;
+            container.classList.remove('dragging');
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const y = e.pageY - container.offsetTop;
+            const walkX = x - startX; // Positive -> move right
+            const walkY = y - startY; // Positive -> move down
+            container.scrollLeft = scrollLeft - walkX;
+            container.scrollTop = scrollTop - walkY;
+        });
+
+        // Touch events
+        container.addEventListener('touchstart', (e) => {
+            if (!e.touches || e.touches.length === 0) return;
+            const t = e.touches[0];
+            isDown = true;
+            container.classList.add('dragging');
+            startX = t.pageX - container.offsetLeft;
+            startY = t.pageY - container.offsetTop;
+            scrollLeft = container.scrollLeft;
+            scrollTop = container.scrollTop;
+        }, { passive: true });
+
+        container.addEventListener('touchend', () => {
+            isDown = false;
+            container.classList.remove('dragging');
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (!isDown || !e.touches || e.touches.length === 0) return;
+            const t = e.touches[0];
+            const x = t.pageX - container.offsetLeft;
+            const y = t.pageY - container.offsetTop;
+            const walkX = x - startX;
+            const walkY = y - startY;
+            container.scrollLeft = scrollLeft - walkX;
+            container.scrollTop = scrollTop - walkY;
+        }, { passive: false });
+    });
+</script>
