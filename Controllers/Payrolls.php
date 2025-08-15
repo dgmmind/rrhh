@@ -36,6 +36,35 @@ class Payrolls extends Controllers
 
 
     }
+    function compliance($id): void
+    {
+        // Verifica si el ID es válido
+        if (!validateId($id)) {
+            handleError();
+            exit();
+        }
+
+        $verifiedId = verifyId('payrolls', 'payrollId', $id);
+        if (empty($verifiedId['total']) || $verifiedId['total'] == 0) {
+            handleError();
+            echo "id no encontrado";
+            exit();
+        }
+        //Este modulo es para mostrar la planilla pero mas reducida asi como averview.php 
+        $data["pageName"]     = "compliance";
+        $data["payrollId"] = $id;
+
+
+        $payroll = $this->model->getPayroll($id);
+
+       
+        $detailPayroll = $this->model->detailPayrollId($id);
+        
+        $data1 = $payroll;
+        $data2 = $detailPayroll;
+      
+        $this->views->getViews($this, 'compliance', $data, $data1,$data2);
+    }
 
     /**
      * @throws Exception
@@ -47,6 +76,8 @@ class Payrolls extends Controllers
          $json = json_encode($payroll);
      
          $request = $this->model->setNewPayroll($json);
+
+
      
          // Devolver exactamente lo que retorna el modelo
          echo json_encode($request);

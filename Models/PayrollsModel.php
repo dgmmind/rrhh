@@ -27,25 +27,6 @@ class PayrollsModel extends Mysql
     }
 
     /**
-     * Obtener una planilla por ID
-     * @throws Exception
-     */
-    public function getPayroll(int $id): array
-    {
-        $query = "SELECT * FROM payrolls WHERE payrollId = ?";
-        $request = $this->find($query, [$id]);
-
-        if (empty($request)) {
-            return json_encode([
-                "status" => "ERROR_PAROLL_NOT_FOUND",
-                "message" => "No hay planillas para mostrar."
-            ]);
-        }
-
-        return $request;
-    }
-
-    /**
      * Crear nueva planilla
      */
     public function setNewPayroll($json): array
@@ -100,21 +81,40 @@ class PayrollsModel extends Mysql
         }
     }
 
-    /**
-     * Obtener detalles de planilla por ID
+      /**
+     * Obtener una planilla por ID
      * @throws Exception
      */
-    public function getPayrollDetails($id): array
+    public function getPayroll(int $id): array
     {
         $query = "SELECT * FROM payrolls WHERE payrollId = ?";
         $request = $this->find($query, [$id]);
 
         if (empty($request)) {
-            return json_encode(["status" => "ERROR_PAROLLS_NOT_FOUND"]);
+            return json_encode([
+                "status" => "ERROR_PAROLL_NOT_FOUND",
+                "message" => "No hay planillas para mostrar."
+            ]);
         }
 
         return $request;
     }
+
+    // /**
+    //  * Obtener detalles de planilla por ID
+    //  * @throws Exception
+    //  */
+    // public function getPayrollDetails($id): array
+    // {
+    //     $query = "SELECT * FROM payrolls WHERE payrollId = ?";
+    //     $request = $this->find($query, [$id]);
+
+    //     if (empty($request)) {
+    //         return json_encode(["status" => "ERROR_PAROLLS_NOT_FOUND"]);
+    //     }
+
+    //     return $request;
+    // }
 
     /**
      * Obtener empleados activos

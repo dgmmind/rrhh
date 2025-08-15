@@ -176,6 +176,7 @@ $settings=$data2;
                             $isr = ($settings['isrChecked'] > 0)
                                 ? $settings['payrollIsr']
                                 : ($details['isr'] ?? 0);
+                            
 
 
                             $notes = $details['notes'];
