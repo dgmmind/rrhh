@@ -186,15 +186,15 @@ class PayrollsModel extends Mysql
         }
 
         $employeeDetails = $payrolls['employee'];
-
+        
         try {
             $this->deletePayrollDetail($payrollId);
 
             foreach ($employeeDetails as $details) {
                 $query = "
                     INSERT INTO payroll_details 
-                    (payrollId, employeeId, bankName, accountNumber, biweeklyBaseSalary, commissions, bonuses, otherIncome, daysAbsent, otherDeductions, rapFioPiso, rapFio, isr, notes)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    (payrollId, employeeId, bankName, accountNumber, biweeklyBaseSalary, commissions, bonuses, otherIncome, daysAbsent, otherDeductions, ihss, rapFioPiso, rapFio, isr, notes)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
                 $setData = [
                     $payrollId,
@@ -207,6 +207,7 @@ class PayrollsModel extends Mysql
                     $details["otherIncome"],
                     $details["daysAbsent"],
                     $details["otherDeductions"],
+                    $details["ihss"],
                     $details["rapFioPiso"],
                     $details["rapFio"],
                     $details["isr"],
