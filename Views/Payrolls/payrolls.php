@@ -132,6 +132,8 @@ $payrolls=$data1;
                             <td><?php echo $row['startDate']; ?> <?php echo $row['endDate']; ?></td>
                             <td><?php echo $row['payrollCreationDate']; ?></td>
                             <td><a href="<?php echo router(); ?>payrolls/overview/<?php echo $row['payrollId']; ?>">Crear</a></td>
+                            <td><a href="<?php echo router(); ?>payrolls/compliance/<?php echo $row['payrollId']; ?>">Compliance</a></td>
+
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

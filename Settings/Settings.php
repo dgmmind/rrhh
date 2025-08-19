@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('America/Tegucigalpa');
 const ROUTER      = "http://localhost/rrhh/";
-//const ROUTER      = "https://1eec3d26da74.ngrok-free.app/rrhh/";
+//const ROUTER      = "https://ad16f4e0cad8.ngrok-free.app/rrhh/";
 const DB_HOST     = 'localhost';
 const DB_NAME     = 'insider';
 const DB_USER     = 'root';
